@@ -13,8 +13,12 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        //
+        $kategori = Kategori::all();
+        $data = array("data"=>$kategori);
+
+        return response()->json($data);
     }
+
 
     /**
      * Store a newly created resource in storage.
