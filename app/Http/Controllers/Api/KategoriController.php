@@ -19,36 +19,25 @@ class KategoriController extends Controller
         return response()->json($data);
     }
 
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'deskripsi'   => 'required',
+            'kategori'    => 'required',
+        ]);
+        
+        $kategoribaru = Kategori::create([
+            'deskripsi'  => $request->deskripsi,
+            'kategori'   => $request->kategori,
+        ]);
+
+        $data = array("data"=>$kategoribaru);
+        return response()->json($data);
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Kategori $kategori)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Kategori $kategori)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Kategori $kategori)
-    {
-        //
-    }
 }
